@@ -65,7 +65,7 @@ export default function SearchBar() {
       <Form className="d-flex" onSubmit={handleSubmit}>
         <FormControl
           type="search"
-          placeholder="Search products or categories"
+          placeholder="Search Bengal Convenience"
           className="me-2"
           aria-label="Search"
           value={searchTerm}
