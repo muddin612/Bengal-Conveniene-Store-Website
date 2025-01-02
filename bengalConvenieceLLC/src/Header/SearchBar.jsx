@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Form, FormControl, Button, ListGroup } from "react-bootstrap";
+import SearchProduct from "../Pages/searchProduct";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../DB/supabaseClient";
 import "../Components/CSS/SearchBar.css";
 
@@ -7,6 +9,7 @@ export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const navigate = useNavigate();
 
   // Fetch suggestions as user types
   useEffect(() => {
@@ -51,8 +54,10 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle search submission
-    console.log("Searching for:", searchTerm);
+    const trimmedSearchTerm = searchTerm.trim();
+    if (trimmedSearchTerm) {
+      navigate(`/search?query=${encodeURIComponent(trimmedSearchTerm)}`);
+    }
   };
 
   const handleSuggestionClick = (suggestion) => {

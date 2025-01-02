@@ -15,6 +15,7 @@ import Footer from "./Header/Footer";
 import ScrollToTop from "./ScrollToTop";
 import CategorySelected from "./Pages/CategorySelected";
 import NewJerseyLottery from "./Pages/NewJerseyLottery";
+import SearchProduct from "./Pages/searchProduct";
 
 const pageVariants = {
   initial: {
@@ -74,6 +75,19 @@ function AnimatedRoutes() {
                   exit="exit"
                 >
                   <NewJerseyLottery />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/search"
+              element={
+                <motion.div
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <SearchProduct />
                 </motion.div>
               }
             />

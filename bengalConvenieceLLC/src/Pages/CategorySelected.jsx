@@ -17,7 +17,11 @@ const OptimizedImage = ({ src, alt, style }) => {
       )}
 
       <img
-        src={src}
+        src={
+          error
+            ? "https://www.russorizio.com/wp-content/uploads/2016/07/ef3-placeholder-image.jpg"
+            : src
+        }
         alt={alt}
         className={`w-100 h-100 object-fit-cover transition-opacity ${
           imageLoaded ? "opacity-100" : "opacity-0"
@@ -31,12 +35,6 @@ const OptimizedImage = ({ src, alt, style }) => {
         onLoad={() => setImageLoaded(true)}
         onError={() => setError(true)}
       />
-
-      {error && (
-        <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light">
-          <span className="text-muted">Image not available</span>
-        </div>
-      )}
     </div>
   );
 };
